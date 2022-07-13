@@ -1,0 +1,31 @@
+<div class="container mt-3">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4>
+                Categoreis
+            </h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">#</th>
+                        <th>name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categories; index as i" (click)="goToCategorie(category)"
+                        class="cursor-pointer">
+                        <td>{{i + 1}}</td>
+                        <td>
+                            {{category.name}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

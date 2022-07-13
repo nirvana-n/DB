@@ -1,99 +1,77 @@
 <div class="container mt-3">
+
+  <div class="row mb-4">
+    <div class="col-12">
+      <h4>
+        Products
+      </h4>
+    </div>
+  </div>
+
+  <!-- search, sort -->
+  <div class="row mb-3">
+    <div class="col-10">
+      <div class="input-group mb-3">
+        <span class="input-group-text">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="form-control" placeholder="search in products..." (input)="searchInProducts($event)">
+      </div>
+    </div>
+
+    <div class="col-2">
+      <div ngbDropdown class="d-inline-block w-100">
+        <button type="button" class="btn btn-outline-secondary w-100 text-start" id="dropdownBasic1" ngbDropdownToggle>
+          sort
+        </button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem (click)="changeSortItem('highest_price')">highest price</button>
+          <button ngbDropdownItem (click)="changeSortItem('lowest_price')">lowest price</button>
+          <button ngbDropdownItem (click)="changeSortItem('newest')">newest</button>
+          <button ngbDropdownItem (click)="changeSortItem('rate')">rate</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-4">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">
-            <span class="fw-bold"> product name </span>
+    <ng-container *ngFor="let product of products">
+      <div class="col-4 mb-3 cursor-pointer" (click)="goToProduct(product)">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <span class="fw-bold"> {{product.name}} </span>
 
-            <span class="float-end badge bg-warning">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </span>
-          </div>
-          <div class="card-text">
-            <p class="text-secondary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, at
-              itaque doloribus accusantium dicta blanditiis?
-            </p>
+              <span class="float-end badge bg-warning" *ngIf="product.rate">
+                {{product.rate}}
+                <i class="bi bi-star-fill"></i>
+                <!-- <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i> -->
+              </span>
+            </div>
 
-            <p class="fw-bold float-end">25$</p>
+            <div class="card-text">
+              <p class="text-secondary">
+                {{product.description}}
+              </p>
 
-            <br />
+              <p class="fw-bold float-end">
+                {{product.price}}$
+              </p>
 
-            <hr />
+              <br />
 
-            <button class="btn btn-primary">buy</button>
-          </div>
-        </div>
-      </div>
-    </div>
+              <hr />
 
-    <div class="col-4">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">
-            <span class="fw-bold"> product name </span>
-
-            <span class="float-end badge bg-warning">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </span>
-          </div>
-          <div class="card-text">
-            <p class="text-secondary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, at
-              itaque doloribus accusantium dicta blanditiis?
-            </p>
-
-            <p class="fw-bold float-end">25$</p>
-
-            <br />
-
-            <hr />
-
-            <button class="btn btn-primary">buy</button>
+              <span class="float-end text-secondary fs-13 mt-2">
+                {{product.date}}
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
 
-    <div class="col-4">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">
-            <span class="fw-bold"> product name </span>
-
-            <span class="float-end badge bg-warning">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </span>
-          </div>
-          <div class="card-text">
-            <p class="text-secondary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, at
-              itaque doloribus accusantium dicta blanditiis?
-            </p>
-
-            <p class="fw-bold float-end">25$</p>
-
-            <br />
-
-            <hr />
-
-            <button class="btn btn-primary">buy</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
