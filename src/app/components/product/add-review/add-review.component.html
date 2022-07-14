@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <span class="h4 fw-bold">
+        Add Review
+    </span>
+</div>
+
+<div class="modal-body">
+    <ng-container *ngIf="user">
+        <p class="text-secondary">
+            You are adding review as <span class="text-decoration-underline text-black">{{user.username}}</span> .
+        </p>
+
+        <form [formGroup]="form" *ngIf="form">
+            <div class="form-group">
+                <label class="form-label">
+                    review
+                </label>
+
+                <textarea class="form-control" placeholder="write your review here" formControlName="review" style="max-height: 250px"></textarea>
+            </div>
+
+            <div class="form-group mt-3">
+                <label class="form-label me-4">
+                    rate
+                </label>
+
+                <i class="bi bi-star bi-star1 me-2 cursor-pointer" [ngClass]="{'text-warning': star_1}" (click)="addRate(1)"></i>
+                <i class="bi bi-star bi-star2 me-2 cursor-pointer" [ngClass]="{'text-warning': star_2}" (click)="addRate(2)"></i>
+                <i class="bi bi-star bi-star3 me-2 cursor-pointer" [ngClass]="{'text-warning': star_3}" (click)="addRate(3)"></i>
+                <i class="bi bi-star bi-star4 me-2 cursor-pointer" [ngClass]="{'text-warning': star_4}" (click)="addRate(4)"></i>
+                <i class="bi bi-star bi-star5 me-2 cursor-pointer" [ngClass]="{'text-warning': star_5}" (click)="addRate(5)"></i>
+            </div>
+        </form>
+    </ng-container>
+
+    <ng-container *ngIf="!user">
+        <p>
+            To add review, you have to
+            <a [routerLink]="['/login']" (click)="active_modal.dismiss()">login</a>
+            or
+            <a [routerLink]="['/signup']" (click)="active_modal.dismiss()">signup</a>.
+        </p>
+    </ng-container>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-outline-danger" (click)="active_modal.dismiss()">
+        Cancel
+    </button>
+
+    <button class="btn btn-primary" (click)="active_modal.close(form?.value)">
+        Add
+    </button>
+
+</div>

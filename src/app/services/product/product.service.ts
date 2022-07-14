@@ -33,4 +33,8 @@ export class ProductService {
   getProductReviews(name: string) {
     return this.http.get(this.base_url + 'product/' + name + '/review')
   }
+
+  postProductReview(form_data: any) {
+    return this.http.post(this.base_url + 'product/' + form_data.product_name + '/review/', form_data.data)
+  }
 }

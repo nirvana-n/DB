@@ -5,12 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/product/products/products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from  '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { StoresComponent } from './components/store/stores/stores.component';
 import { SingleStoreComponent } from './components/store/single-store/single-store.component';
 import { SingleProductComponent } from './components/product/single-product/single-product.component';
 import { CategoriesComponent } from './components/category/categories/categories.component';
 import { SingleCategoryComponent } from './components/category/single-category/single-category.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { BaseComponent } from './components/base/base.component';
+import { AddReviewComponent } from './components/product/add-review/add-review.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +25,19 @@ import { SingleCategoryComponent } from './components/category/single-category/s
     SingleStoreComponent,
     SingleProductComponent,
     CategoriesComponent,
-    SingleCategoryComponent
+    SingleCategoryComponent,
+    LoginComponent,
+    SignupComponent,
+    BaseComponent,
+    AddReviewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

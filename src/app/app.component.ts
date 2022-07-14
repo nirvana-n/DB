@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shop';
+  user: any = null
+  
+
+  constructor(private router: Router) { }
+
+  logout() {
+    localStorage.removeItem('user')
+    this.router.navigate(['/login'])
+  }
+
+  ngDoCheck() {
+    let _user: any = localStorage.getItem('user')
+    this.user = JSON.parse(_user)
+  }
 }

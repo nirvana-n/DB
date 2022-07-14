@@ -46,28 +46,32 @@
                 Reviews:
             </span>
 
-            <div class="mt-4">
+            <button class="btn btn-sm btn-outline-primary float-end" (click)="openAddRevieModal()">
+                Add Review
+            </button>
+
+            <div class="mt-4" style="max-height: 300px; overflow-y: scroll;">
                 <div *ngFor="let review of reviews">
                     <p class="m-1">
                         <i class="bi bi-person-circle"></i>
                         <span class="fw-bold">
-                            {{review.user.name}}
+                            {{review.user.username}}
                         </span>
 
                         <span class="float-end fs-14 text-secondary">
-                            {{review.user.name}} rate {{review.rate}} on {{review.product.name}}.
+                            {{review.user.username}} rate {{review.rate}} on {{review.product.name}}.
                         </span>
                     </p>
-    
+
                     <p *ngIf="review.description" class="ms-1">
                         <span class="text-secondary">
-                            {{review.user.name}} said:
+                            {{review.user.username}} said:
                         </span>
                         <span class="text-black">
                             {{review.description}}.
                         </span>
                     </p>
-    
+
                     <hr>
                 </div>
             </div>
