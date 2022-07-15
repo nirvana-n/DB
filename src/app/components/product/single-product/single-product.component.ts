@@ -40,8 +40,6 @@ export class SingleProductComponent implements OnInit {
     this.product_service.getProductReviews(name).subscribe(
       (res: any) => {
         this.reviews = res
-        console.log("reviews: ", this.reviews);
-        
       }
     )
   }
@@ -50,8 +48,6 @@ export class SingleProductComponent implements OnInit {
     let modal = this.modal.open(AddReviewComponent, {centered: true})
 
     modal.closed.subscribe((res: any) => {
-      console.log("res in add review: ", res);
-      
       this.addReview(res)
     })
   }
@@ -65,8 +61,6 @@ export class SingleProductComponent implements OnInit {
         description: data.review
       }
     }
-    
-    console.log("data send for review: ", data);
     
     this.product_service.postProductReview(form_data).subscribe(
       (res: any) => {

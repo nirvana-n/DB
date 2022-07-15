@@ -28,10 +28,6 @@ export class OrdersComponent implements OnInit {
     )
   }
 
-  goToOrder(order: Order) {
-    console.log("does not support yet.");
-    
-  }
 
   addOrder() {
     this.router.navigate(['/order', 'add'])

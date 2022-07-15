@@ -35,8 +35,6 @@ export class AddOrderComponent implements OnInit {
 
     modal.closed.subscribe((products: any) => {
       this.selected_products = products
-      console.log("after close: ", this.selected_products);
-      
     })
   }
 
@@ -46,9 +44,6 @@ export class AddOrderComponent implements OnInit {
       delivery_method: this.delivery_method,
       customer_address: this.selected_address.id
     }
-
-    console.log("data fucker: ", data);
-    
 
     this.order_service.sendOrder(data).subscribe(
       (res: any) => {

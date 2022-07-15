@@ -16,22 +16,16 @@ export class SingleStoreComponent implements OnInit {
 
   ngOnInit(): void {
     let name = this.getStoreId()
-    console.log("name: ", name);
-
     this.getSingleStore(name)
   }
 
   private getStoreId() {
-    console.log("-----", this.route.snapshot.params);
-
     return this.route.snapshot.params['name']
   }
 
   private getSingleStore(name: any) {
     this.store_service.getSingleStore(name).subscribe(
       (res: any) => {
-        console.log("res: ", res);
-
         this.store = res
       }
     )

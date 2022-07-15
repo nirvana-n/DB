@@ -38,8 +38,6 @@ export class SignupComponent implements OnInit {
       (res: any) => {
         localStorage.setItem('user', JSON.stringify(res))
         let user: any = localStorage.getItem('user')
-        console.log("user after signup: ", JSON.parse(user));
-
         this.router.navigate([''])
       }
     )

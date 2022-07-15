@@ -34,9 +34,6 @@ export class AddReviewComponent implements OnInit {
     let _user: any = localStorage.getItem('user')
     if (_user)
       this.user = JSON.parse(_user)
-
-    console.log("get user: ", this.user);
-
   }
 
   private generateForm() {

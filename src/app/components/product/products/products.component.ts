@@ -31,8 +31,6 @@ export class ProductsComponent implements OnInit {
 
     this.product_service.getSingleProduct(title).subscribe(
       (res: any) => {
-        console.log("res: ", res);
-
         if (!res.body.length) {
           this.products = [res.body]
         } else {

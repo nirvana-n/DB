@@ -26,7 +26,7 @@
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let order of orders; index as i" (click)="goToOrder(order)" class="cursor-pointer">
+                    <tr *ngFor="let order of orders; index as i">
                         <td>{{i + 1}}</td>
                         <td>
                             <i class="bi bi-person-fill"></i>
