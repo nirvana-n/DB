@@ -1,0 +1,163 @@
+<div class="container mt-3">
+    <div class="row mb-4">
+        <div class="col-12">
+            <span class="h4">
+                Add Order
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <span class="fw-bold">
+                            order items
+                        </span>
+
+                        <button (click)="addOrderItem()" class="btn btn-outline-primary float-end">
+                            <i class="bi bi-plus-lg"></i>
+                            Add Item
+                        </button>
+                    </div>
+
+                    <div class="card-text mt-5" *ngIf="selected_products.length">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>name</th>
+                                    <th>price</th>
+                                    <th>count</th>
+                                    <th class="text-center">availablity</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let store_product of selected_products; index as i" class="cursor-pointer">
+                                    <td>
+                                        {{store_product.product.name}}
+                                    </td>
+
+                                    <td>
+                                        {{store_product.product.price}} $
+                                    </td>
+
+                                    <td>
+                                        {{store_product.count}}
+                                    </td>
+
+                                    <td class="text-center">
+                                        <ng-container *ngIf="store_product.available">
+                                            <i class="bi bi-check-lg text-success"></i>
+                                        </ng-container>
+
+                                        <ng-container *ngIf="!store_product.available">
+                                            <i class="bi bi-x-lg text-danger"></i>
+                                        </ng-container>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-primary mt-5" *ngIf="!selected_products.length">
+                        <p>
+                            There is no order items yet.
+                        </p>
+                        <a class="text-decoration-underline cursor-pointer" (click)="addOrderItem()">Click here</a> to
+                        add item.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <span class="fw-bold">
+                            Customer
+                        </span>
+                    </div>
+
+                    <hr>
+
+                    <div class="card-text mt-3">
+                        <p>
+                            <span class="text-secondary">
+                                firstname:
+                            </span>
+                            <span class="fw-bold">
+                                {{user.firstname}}
+                            </span>
+                        </p>
+
+                        <p>
+                            <span class="text-secondary">
+                                lastname:
+                            </span>
+                            <span class="fw-bold">
+                                {{user.lastname}}
+                            </span>
+                        </p>
+
+                        <p>
+                            <span class="text-secondary">
+                                phone:
+                            </span>
+                            <span class="fw-bold">
+                                {{user.phone}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-body">
+                    <div class="card-title">
+                        <span class="fw-bold">
+                            Delivery Method
+                        </span>
+                    </div>
+
+                    <hr>
+
+                    <div class="card-text">
+                        <form>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="delivery" id="tp" (change)="changeDeliveryMethod('TP')">
+                                <label class="form-check-label" for="tp">
+                                    Tapsi
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="delivery" id="sp" (change)="changeDeliveryMethod('SP')">
+                                <label class="form-check-label" for="sp">
+                                    Snapp
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="delivery" id="pt" (change)="changeDeliveryMethod('PT')">
+                                <label class="form-check-label" for="pt">
+                                    Post
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <button class="btn btn-success float-end" (click)="save()">
+                Save
+            </button>
+        </div>
+    </div>
+</div>

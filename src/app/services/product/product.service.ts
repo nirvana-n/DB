@@ -17,8 +17,6 @@ export class ProductService {
   base_url: string = Settings.API_ENDPOINT
 
   getProducts() {
-    console.log("base url: ", this.base_url);
-
     return this.http.get(this.base_url + 'product/', { headers: this.header })
   }
 
@@ -28,6 +26,10 @@ export class ProductService {
 
   sortProducts(by: string) {
     return this.http.get(this.base_url + 'product/?sort=' + by, { headers: this.header })
+  }
+
+  getStoreProducts() {
+    return this.http.get(this.base_url + 'store-product/')
   }
 
   getProductReviews(name: string) {

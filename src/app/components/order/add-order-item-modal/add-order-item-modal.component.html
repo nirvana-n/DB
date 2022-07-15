@@ -1,0 +1,85 @@
+<div class="modal-header">
+    <span class="h4 fw-bold">
+        Order items
+    </span>
+</div>
+
+<div class="modal-body">
+    <div class="row mb-4">
+        <div class="col-1">
+        </div>
+
+        <div class="col-3">
+            <span>
+                name
+            </span>
+        </div>
+
+        <div class="col-2">
+            <span>
+                price
+            </span>
+        </div>
+
+        <div class="col-3">
+            <span>
+                count
+            </span>
+        </div>
+
+        <div class="col-3 text-center">
+            <span>
+                availablity
+            </span>
+        </div>
+    </div>
+    <ng-container *ngFor="let store_product of store_products">
+        <div class="row py-3 align-items-center" [ngClass]="{'disable': !store_product.available}">
+            <div class="col-1">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" (change)="selectProduct($event, store_product)">
+                </div>
+            </div>
+
+            <div class="col-3">
+                <span>
+                    {{store_product.product.name}}
+                </span>
+            </div>
+
+            <div class="col-2">
+                <span>
+                    {{store_product.product.price}} $
+                </span>
+            </div>
+
+            <div class="col-3">
+                <input type="number" min="1" value="1" class="form-control" (change)="changeCount($event, store_product)">
+            </div>
+
+            <div class="col-3 text-center ">
+                <span>
+                    <ng-container *ngIf="store_product.available">
+                        <i class="bi bi-check-lg text-success"></i>
+                    </ng-container>
+                    <ng-container *ngIf="!store_product.available">
+                        <i class="bi bi-x-lg text-danger"></i>
+                    </ng-container>
+                </span>
+            </div>
+        </div>
+
+        <hr class="m-0">
+
+    </ng-container>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-outline-danger" (click)="active_modal.dismiss()">
+        Cancel
+    </button>
+
+    <button class="btn btn-primary" (click)="save()">
+        Add
+    </button>
+</div>

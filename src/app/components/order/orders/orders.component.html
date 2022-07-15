@@ -1,0 +1,54 @@
+<div class="container mt-3">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="d-inline">
+                Orders
+            </h4>
+
+            <button class="btn btn-primary float-end" (click)="addOrder()">
+                Add Order
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table" *ngIf="orders?.length">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">#</th>
+                        <th>customer</th>
+                        <th>shipping method</th>
+                        <th>payment status</th>
+                        <th>items</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let order of orders; index as i" (click)="goToOrder(order)" class="cursor-pointer">
+                        <td>{{i + 1}}</td>
+                        <td>
+                            <i class="bi bi-person-fill"></i>
+                            {{order.customer_address.user.firstname + ' ' + order.customer_address.user.lastname}}
+                        </td>
+                        <td>
+                            {{order.delivery_method === "TP" ? "Tapsi" : order.delivery_method === "SP" ? "Snapp" :
+                            order.delivery_method === "PT" ? "Post" : "does not have"}}
+                        </td>
+                        <td>
+                            {{ order.order_status.status }}
+                        </td>
+                        <td>
+                            {{order.order_items.length}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-primary">
+                <p>There is no order yet.</p>
+                <a class="cursor-pointer" (click)="addOrder()">Click here</a> to add order.
+            </div>
+        </div>
+    </div>
+</div>

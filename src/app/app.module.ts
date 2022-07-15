@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { BaseComponent } from './components/base/base.component';
 import { AddReviewComponent } from './components/product/add-review/add-review.component';
+import { OrdersComponent } from './components/order/orders/orders.component';
+import { AddOrderComponent } from './components/order/add-order/add-order.component';
+import { AddOrderItemModalComponent } from './components/order/add-order-item-modal/add-order-item-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { AddReviewComponent } from './components/product/add-review/add-review.c
     LoginComponent,
     SignupComponent,
     BaseComponent,
-    AddReviewComponent
+    AddReviewComponent,
+    OrdersComponent,
+    AddOrderComponent,
+    AddOrderItemModalComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@
                         <th>name</th>
                         <th>price</th>
                         <th>rate</th>
-                        <th>availablity</th>
+                        <th class="text-center">availablity</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,12 +29,17 @@
                             {{product.product.price}} $
                         </td>
                         <td>
-                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star text-warning"></i>
                             {{product.product.rate}}
                         </td>
-                        <td>
+                        <td class="text-center">
                             <span class="text-primary">
-                                {{product.available ? "available" : "not available"}}
+                                <ng-container *ngIf="product.available">
+                                    <i class="bi bi-check-lg text-success"></i>
+                                </ng-container>
+                                <ng-container *ngIf="!product.available">
+                                    <i class="bi bi-x-lg text-danger"></i>
+                                </ng-container>
                             </span>
                         </td>
                     </tr>
