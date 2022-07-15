@@ -19,6 +19,7 @@
                         <th style="width: 50px;">#</th>
                         <th>customer</th>
                         <th>shipping method</th>
+                        <th>address</th>
                         <th>payment status</th>
                         <th>items</th>
                     </tr>
@@ -36,6 +37,9 @@
                             order.delivery_method === "PT" ? "Post" : "does not have"}}
                         </td>
                         <td>
+                            {{order.customer_address.address}}
+                        </td>
+                        <td>
                             {{ order.order_status.status }}
                         </td>
                         <td>
@@ -45,7 +49,7 @@
                 </tbody>
             </table>
 
-            <div class="alert alert-primary">
+            <div class="alert alert-primary" *ngIf="!orders?.length">
                 <p>There is no order yet.</p>
                 <a class="cursor-pointer" (click)="addOrder()">Click here</a> to add order.
             </div>

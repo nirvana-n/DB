@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrderService } from 'src/app/services/order/order.service';
 import { AddOrderItemModalComponent } from '../add-order-item-modal/add-order-item-modal.component';
@@ -12,10 +13,12 @@ export class AddOrderComponent implements OnInit {
   user: any = null
   selected_products: any = []
   delivery_method: string = ''
+  selected_address: any = null
 
   constructor(
     private modal: NgbModal,
-    private order_service: OrderService
+    private order_service: OrderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +43,8 @@ export class AddOrderComponent implements OnInit {
   save() {
     let data = {
       order_items: this.prepareProducts(this.selected_products),
-      delivery_method: this.delivery_method
+      delivery_method: this.delivery_method,
+      customer_address: this.selected_address.id
     }
 
     console.log("data fucker: ", data);
@@ -48,8 +52,7 @@ export class AddOrderComponent implements OnInit {
 
     this.order_service.sendOrder(data).subscribe(
       (res: any) => {
-        console.log("fuck you: ", res);
-        
+        this.router.navigate(['/orders'])
       }
     )
   }
@@ -68,6 +71,10 @@ export class AddOrderComponent implements OnInit {
 
   changeDeliveryMethod(method: string) {
     this.delivery_method = method
+  }
+
+  selectAddress(address: any) {
+    this.selected_address = address
   }
 
 }

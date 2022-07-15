@@ -14,6 +14,8 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   logout() {
+    console.log("here");
+    
     localStorage.removeItem('user')
     this.router.navigate(['/login'])
   }
