@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container mt-3" *ngIf="user !== null">
     <div class="row mb-4">
         <div class="col-12">
             <h4 class="d-inline">
@@ -54,5 +54,13 @@
                 <a class="cursor-pointer" (click)="addOrder()">Click here</a> to add order.
             </div>
         </div>
+    </div>
+</div>
+
+<div class="container mt-3" *ngIf="user === null">
+    <div class="alert alert-primary">
+        You have to
+        <a [routerLink]="['/login']" class="text-decoration-underline cursor-pointer">login</a> or
+        <a [routerLink]="['/signup']" class="text-decoration-underline cursor-pointer">signup</a>.
     </div>
 </div>

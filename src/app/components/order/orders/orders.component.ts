@@ -10,6 +10,7 @@ import { OrderService } from 'src/app/services/order/order.service';
 })
 export class OrdersComponent implements OnInit {
   orders: Order[] | null = null
+  user: any = null
 
   constructor(
     private order_service: OrderService,
@@ -17,7 +18,9 @@ export class OrdersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getOrders()
+    this.getUser()
+    if (this.user)
+      this.getOrders()
   }
 
   getOrders() {
@@ -28,6 +31,13 @@ export class OrdersComponent implements OnInit {
     )
   }
 
+  getUser() {
+    let _user: any = localStorage.getItem('user')
+    this.user = JSON.parse(_user)
+
+    console.log("user: ", this.user);
+
+  }
 
   addOrder() {
     this.router.navigate(['/order', 'add'])

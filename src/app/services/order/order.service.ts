@@ -14,7 +14,7 @@ export class OrderService {
 
   getAllOrders() {
     let _user: any = localStorage.getItem('user')
-    let user = JSON.parse(_user)
+    let user: any = JSON.parse(_user)
     return this.http.get(this.base_url + 'order/' + '?user_id=' + user.id)
   }
 
